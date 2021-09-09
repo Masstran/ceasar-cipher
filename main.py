@@ -1,9 +1,5 @@
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
-
 def caesar(text: str, shift: int, direction: str) -> str:
   multiplier = 0
   if direction == "encode":
@@ -22,4 +18,16 @@ def caesar(text: str, shift: int, direction: str) -> str:
     new_text += alphabet[new_char_position]
   return new_text
 
-print(f"Result text is: {caesar(text, shift, direction)}")
+from art import CEASAR_LOGO
+print(CEASAR_LOGO)
+
+while True:
+  direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+  text = input("Type your message:\n").lower()
+  shift = int(input("Type the shift number:\n"))
+  print(f"Result text is: {caesar(text, shift, direction)}")
+  cont_answer = ""
+  while cont_answer not in ["yes", "no"]:
+    cont_answer = input("Do you wish to continue? 'yes' or 'no' ").lower()
+  if cont_answer == 'no':
+    break
