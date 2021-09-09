@@ -15,4 +15,20 @@ def encrypt(text: str, shift: int) -> str:
     encrypted_text += alphabet[encrypted_char_position]
   return encrypted_text
 
-print(encrypt(text, shift))
+def decrypt(text: str, shift: int) -> str:
+  decrypted_text = ""
+  for char in text:
+    if char not in alphabet:
+      decrypted_text += char
+      continue
+    char_position = alphabet.index(char)
+    decrypted_char_position = (char_position - shift) % len(alphabet)
+    decrypted_text += alphabet[decrypted_char_position]
+  return decrypted_text
+
+if direction == "encode":
+  print(f"The encoded text is: {encrypt(text, shift)}")
+elif direction == "decode":
+  print(f"The decoded text is: {decrypt(text, shift)}")
+else:
+  print("I have no idea what you are trying to do.")
